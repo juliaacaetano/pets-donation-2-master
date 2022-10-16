@@ -1,17 +1,35 @@
 <template>
   <v-container class="pa-8" fluid>
-    <v-container class="grey lighten-4" 
-      fluid
-    >
+    <v-container class="grey lighten-4" fluid>
     <v-row>
         <v-list-item v-for="card of cards" :key="card.card">
-          <v-list-item-content> 
-            <h1>{{ card.card }}</h1>
-          </v-list-item-content>
+          <table>
+            <tr>
+              <td>
+                <h1> {{card.card }}</h1>
+                <h3>Sexo: {{ card.sexo }}</h3>
+                <h3>Idade: {{ card.idade }}</h3>
+                <h3>Doador: {{ card.doador }}</h3>
+                <h3>E-mail: {{ card.email }}</h3>
+                <h3>Telefone: {{ card.telefone }}</h3>
+                <h3>Instagram: {{ card.instagram }}</h3>
+                <h3>Localidade: {{ card.local }}</h3>
+                <br>
+                <h3>{{ card.descricao }}</h3>    
+              </td>
+              <td><img :src="card.foto" max-height="250" max-width="350"></td>
+            </tr>
+            <br>
+            <v-btn
+                class="ml-2 blue--text"
+                color="indigo lighten-4"
+                @click="adotar"
+              >Adotar
+              </v-btn>
+          </table>
         </v-list-item>
       </v-row>
     </v-container>
-  
   </v-container>
 </template>>
 

@@ -1,3 +1,31 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@juliaacaetano 
+juliaacaetano
+/
+pets-donation-2-master
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+pets-donation-2-master/src/views/HomeView.vue
+@juliaacaetano
+juliaacaetano commit 1 - carrossel
+Latest commit f65a8ab 11 days ago
+ History
+ 1 contributor
+137 lines (127 sloc)  3.97 KB
 
 <template>
   <v-container fill-height fluid>
@@ -85,24 +113,6 @@
 
 <script>
 export default{
-  data () {
-      return {
-        colors: [
-          'indigo',
-          'warning',
-          'pink darken-2',
-          'red lighten-1',
-          'deep-purple accent-4',
-        ],
-        slides: [
-          'First',
-          'Second',
-          'Third',
-          'Fourth',
-          'Fifth',
-        ],
-      };
-    },
   methods: {
     faleconosco() {
       this.$router.push({ name: "Fale Conosco"});
@@ -126,3 +136,30 @@ export default{
 };
 </script>
 
+<script>
+  export default {
+    data () {
+      return {
+        colors: [
+          'indigo',
+          'warning',
+          'pink darken-2',
+          'red lighten-1',
+          'deep-purple accent-4',
+        ],
+        slides: [
+          'First',
+          'Second',
+          'Third',
+          'Fourth',
+          'Fifth',
+        ],
+      }
+    },
+  }
+</script>
+
+
+
+<style>
+</style>
