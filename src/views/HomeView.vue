@@ -30,7 +30,7 @@
         </v-carousel-item>
 
       </v-carousel>
-</template>
+      </template>
       <v-row>
         <v-col class="text--secondary" cols="6">
           <h2 class="h2">Pet's Donation</h2>
@@ -125,4 +125,3 @@ export default{
   }
 };
 </script>
-

@@ -1,147 +1,92 @@
 <template>
-  <v-app id="inspire">
-    <v-content>
-      <v-container class="fill-height" fluid>
-        <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="8">
-            <v-card class="elevation-12">
-              <v-window v-model="step">
-                <v-window-item :value="1">
-                  <v-row>
-                    <v-col cols="12" md="8">
-                      <v-card-text class="mt-12">
-                        <h1 
-                          class ="text-center display-2 color='indigo lighten-2' text--accent-3"
-                        >Realize o seu Login!</h1>
-                        
-                        <h2 class="text-center mt-4 text-color indigo lighten-4">Insira o seu e-mail para acessar sua conta!</h2>
-                        <v-form>
-                          <v-text-field 
-                            label="Email"
-                            name="Email"
-                            prepend-icon="mdi-email"
-                            type="text"
-                            color="indigo lighten-2"
-                          />
-
-                          <v-text-field
-                            id="password"
-                            label="Password"
-                            name="password"
-                            prepend-icon="mdi-lock"
-                            type="password"
-                            color="indigo lighten-2"
-                          />
-                          <div class="text-center mt-4">
-                          <v-btn class="mx-2" fab color="black" outlined 
-                          href="https://accounts.google.com/v3/signin/identifier?dsh=S-2063564277%3A1662145155433378&continue=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dgghh%26oq%3Dgghh%26aqs%3Dchrome..69i57.832j0j1%26sourceid%3Dchrome%26ie%3DUTF-8&ec=GAZAAQ&hl=pt-BR&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AQN2RmUIKweXZWm8wQrjz7UjU8gGCMaDC8l5tzuDxC5YY04mB7x96ipnOU-cQkOksUaop-s8leGODQ">
-                            <v-icon>mdi-google-plus</v-icon>
-                          </v-btn>
-
-                          <v-btn class="mx-2" fab color="black" outlined 
-                          href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjYyMTQ1MDk0LCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D">
-                            <v-icon>mdi-facebook</v-icon>
-                          </v-btn>
-                        </div>
-                        </v-form>
-                        <h3 class="text-center mt-4">Esqueceu sua senha?</h3>
-                      </v-card-text>
-                      <div class="text-center mt-3">
-                        <v-btn rounded color="indigo lighten-2" dark>Entrar</v-btn>
-                        
-                      </div>
-                    </v-col>
-                    <v-col cols="12" md="4" class="indigo lighten-2">
-                      <v-card-text class="white--text mt-12">
-                        <h1 class="text-center display-1">Hello, Friend!</h1>
-                        <h5
-                          class="text-center"
-                        >Enter your personal details and start journay with us</h5>
-                      </v-card-text>
-                      <div class="text-center">
-                        <v-btn rounded outlined dark @click="step++">SIGN UP</v-btn>
-                      </div>
-                    </v-col>
-                  </v-row>
-                </v-window-item>
-                <v-window-item :value="2">
-                  <v-row class="fill-height">
-                    <v-col cols="12" md="4" class="indigo lighten-2">
-                      <v-card-text class="white--text mt-12">
-                        <h1 class="text-center display-1">Welcome Back!</h1>
-                        <h5
-                          class="text-center"
-                        >To Keep connected with us please login with your personnel info</h5>
-                      </v-card-text>
-                      <div class="text-center">
-                        <v-btn rounded outlined dark @click="step--">Sign in</v-btn>
-                      </div>
-                    </v-col>
-
-                    <v-col cols="12" md="8">
-                      <v-card-text class="mt-12">
-                        <h1 class="text-center display-2 teal--text text--accent-3">Create Account</h1>
-                        <div class="text-center mt-4">
-                          <v-btn class="mx-2" fab color="black" outlined>
-                            <v-icon>fab fa-facebook-f</v-icon>
-                          </v-btn>
-
-                          <v-btn class="mx-2" fab color="black" outlined>
-                            <v-icon>fab fa-google-plus-g</v-icon>
-                          </v-btn>
-                          <v-btn class="mx-2" fab color="black" outlined>
-                            <v-icon>fab fa-linkedin-in</v-icon>
-                          </v-btn>
-                        </div>
-                        <h4 class="text-center mt-4">Ensure your email for registration</h4>
-                        <v-form>
-                          <v-text-field
-                            label="Name"
-                            name="Name"
-                            prepend-icon="person"
-                            type="text"
-                            color="indigo lighten-2"
-                          />
-                          <v-text-field
-                            label="Email"
-                            name="Email"
-                            prepend-icon="email"
-                            type="text"
-                            color="indigo lighten-2"
-                          />
-
-                          <v-text-field
-                            id="password"
-                            label="Password"
-                            name="password"
-                            prepend-icon="lock"
-                            type="password"
-                            color="indigo lighten-2"
-                          />
-                        </v-form>
-                      </v-card-text>
-                      <div class="text-center mt-n5">
-                        <v-btn rounded color="indigo lighten-2" dark>SIGN UP</v-btn>
-                      </div>
-                    </v-col>
-                  </v-row>
-                </v-window-item>
-              </v-window>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-content>
-  </v-app>
+  <v-container fluid class="body">
+    <v-row class="row">
+      <v-col cols="1"></v-col>
+      <v-col cols="5" class="pt-3 ctexto">
+        <v-card-text >
+          <h1>FAÇA JÁ SEU LOGIN</h1>
+        </v-card-text>
+        <v-divider></v-divider>
+           <v-img align="center" max-width="900" src="@/assets/images/foto.png"></v-img>  
+      </v-col>
+      <v-col cols="2"></v-col>
+      <v-col class="text-center">
+        <v-form class="login">
+          <h1 class="titlelogin">
+            LOGIN
+            <v-divider></v-divider>
+          </h1>
+          <v-text-field label="Email" outlined></v-text-field>
+          <v-text-field label="Senha" outlined></v-text-field>
+          <v-btn @click="entrar" color="indigo lighten-3"> Login </v-btn>
+          <h5 class="titlecadastro">Quer experimentar? Clique abaixo</h5>
+          <v-btn @click="cadastrar" color="indigo lighten-3"> cadastrar </v-btn>
+        </v-form>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    step: 1
-  }),
-  props: {
-    source: String
-  }
+  methods: {
+    async cadastrar() {
+      this.$router.push({ name: "Cadastro" });
+    },
+    async entrar() {
+      this.$router.push({ name: "Home" });
+    },
+  },
 };
 </script>
+
+<style scoped>
+.ctexto {
+  padding-left: 3rem;
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.bar {
+  margin-bottom: 1rem;
+  background: indigo lighten-3;
+  padding: 1rem 0 1rem 0;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+/* botão login e cadastro */
+
+.body {
+  font-family: "Roboto";
+  padding: 1;
+}
+.login {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  text-align: center;
+  max-width: 16rem;
+}
+.subtitle {
+  text-align: start;
+}
+.titlelogin {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-family: "Roboto";
+}
+.titlecadastro {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+h3 {
+  font-weight: bold;
+}
+img {
+  max-height: 7rem;
+  max-width: 7rem;
+}
+.row {
+  margin-top: 3rem;
+}
+</style>
+
