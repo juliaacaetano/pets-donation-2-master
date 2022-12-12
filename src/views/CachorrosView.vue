@@ -10,8 +10,8 @@
     <v-row>
         <v-spacer></v-spacer>
         <v-col
-          v-for="card in cards"
-          :key="card.card"
+          v-for="animal of animais"
+          :key="animal.nomeanimal"
           cols="12"
           sm="6"
           md="4"
@@ -20,36 +20,31 @@
            <v-img
               class="white--text"
               height="200px"
-              :src="card.foto"
+              :src="animal.foto"
             >
             </v-img>
 
             <v-card-title
               class="text-h4 justify-center"
-              v-text="card.card"
+              v-text="animal.nomeanimal"
             >
             </v-card-title>
 
             <v-card-text
               class="text-h7 justify-left"
             >
-              Idade: <span v-text="card.idade"></span><br>
-              Doador: <span v-text="card.doador"></span><br>
-              E-mail: <span v-text="card.email"></span><br>
-              Cidade: <span v-text="card.local"></span><br>
+              Idade: <span v-text="animal.idade"></span><br>
+              Doador: <span v-text="animal.nomedoador"></span><br>
+              E-mail: <span v-text="animal.email"></span><br>
+              Cidade: <span v-text="animal.local"></span><br>
             </v-card-text>
 
             <v-card-actions class="white justify-center ml-2">
               <v-btn
-                class="ml-2"
+                class="ml-2 black--text"
                 color="indigo lighten-4"
-              >
-                <a href="https://web.whatsapp.com/" target="_blank">Compartilhar</a>
-              </v-btn>
-              <v-btn
-                class="ml-2 blue--text"
-                color="indigo lighten-4"
-                @click="vermais"
+                v-on:click="vermais"
+                
               >Ver Mais
               </v-btn>
             </v-card-actions>
@@ -62,46 +57,40 @@
 </template>>
 
 <script>
+  import * as fb from "@/plugins/firebase";
   export default {
-    data: () => ({
-      
-      cards: [
-        { 
-          card: 'Dara', 
-          foto: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR9sZm2vhklfV4VGBNBNv9VD4Gyl3afsRfLxnFrMspOV3APyvYv",
-          idade: '1 ano',
-          doador: "João da Silva",
-          email: "joao.silva@servidor.com",
-          local: "Araquari - SC",
-        },
-        { 
-          card: 'Donavan', 
-          foto: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ65QlzcVJIQwi3oJnUBB9xjSs3mAPVpaiT2ukiPWF2Eek-Dfgr",
-          idade: '2 anos',
-          doador: "Maria Candido",
-          email: "m.cand@hconex.com",
-          local: "Joinville - SC",
-        },
-        { 
-          card: 'Bob', 
-          foto: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ_pWdcz0XRCgcQFgQmdg_Trk7D33Yv7SDvKr-XIifMUrGfwNKJ",
-          idade: '8 meses',
-          doador: "Carlos Roberto",
-          email: "cr_souza@fx-mail.com.br",
-          local: "Joinville - SC",
-        },
-        { 
-          card: 'Pipoca', 
-          foto: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSNJ7jj6rRFtCymfwvrDD6m2QMBO9-hnfPVKsJyeyJt0YmiuHO7",
-          idade: '3 anos',
-          doador: "Joana Marcia",
-          email: "marcia.1996@htz-fast.com.br",
-          local: "Enseada - SC",
-        },
-      ],
-    }),
+  data() {
+    return {
+      uid: "",
+      chave: "",
+      animais: [],
+    };
+  },
+    mounted() {
+      this.uid = fb.auth.currentUser.uid;
+      this.buscarAnimaisNaFirebase();
+    },
     methods: {
+      async buscarAnimaisNaFirebase() {
+        this.animais = [];
+        const logAnimais = await fb.animaisCollection
+          .where("especie", "==", "Cachorro")
+          .get();
+        for (const doc of logAnimais.docs) {
+          this.animais.push({
+            id: doc.id,
+            nomeanimal: doc.data().nomeanimal,
+            foto: doc.data().foto,
+            idade: doc.data().idade,
+            nomedoador: doc.data().nomedoador,
+            email: doc.data().email,
+            local: doc.data().cidade,
+            chave: this.nomeanimal,
+          });
+        }
+      },
       vermais() {
+        
         this.$router.push({ name: "Ver Mais"});
       }
     }

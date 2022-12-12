@@ -10,8 +10,8 @@
     <v-row>
         <v-spacer></v-spacer>
         <v-col
-          v-for="card in cards"
-          :key="card.card"
+          v-for="animal of animais"
+          :key="animal.nomeanimal"
           cols="12"
           sm="6"
           md="4"
@@ -20,34 +20,28 @@
            <v-img
               class="white--text"
               height="200px"
-              :src="card.foto"
+              :src="animal.foto"
             >
             </v-img>
 
             <v-card-title
               class="text-h4 justify-center"
-              v-text="card.card"
+              v-text="animal.nomeanimal"
             >
             </v-card-title>
 
             <v-card-text
               class="text-h7 justify-left"
             >
-              Idade: <span v-text="card.idade"></span><br>
-              Doador: <span v-text="card.doador"></span><br>
-              E-mail: <span v-text="card.email"></span><br>
-              Cidade: <span v-text="card.local"></span><br>
+              Idade: <span v-text="animal.idade"></span><br>
+              Doador: <span v-text="animal.nomedoador"></span><br>
+              E-mail: <span v-text="animal.email"></span><br>
+              Cidade: <span v-text="animal.local"></span><br>
             </v-card-text>
 
             <v-card-actions class="white justify-center ml-2">
               <v-btn
-                class="ml-2"
-                color="indigo lighten-4"
-              >
-                <a href="https://web.whatsapp.com/" target="_blank">Compartilhar</a>
-              </v-btn>
-              <v-btn
-                class="ml-2 blue--text"
+                class="ml-2 black--text"
                 color="indigo lighten-4"
                 @click="vermais"
               >Ver Mais
@@ -62,37 +56,36 @@
 </template>>
 
 <script>
+  import * as fb from "@/plugins/firebase";
   export default {
-    data: () => ({
-      
-      cards: [
-        { 
-          card: 'Esguicho', 
-          foto: "https://i0.statig.com.br/bancodeimagens/4b/sc/db/4bscdb8mcp1misqk86ouxdavp.jpg",
-          idade: '5 meses',
-          doador: "Inês Maria",
-          email: "ines.maria@gmail.com.br",
-          local: "Araquari - SC",
-        },
-        { 
-          card: 'Rato', 
-          foto: "https://s2.glbimg.com/UG8E6w0z5vqc1t2rswlV5lYw45k=/e.glbimg.com/og/ed/f/original/2022/02/22/terrario-hamster-como-montar-o-espaco-perfeito-para-o-meu-pet-vida-de-bicho.png",
-          idade: '5 meses',
-          doador: "João da Silva",
-          email: "joao.silva@servidor.com",
-          local: "Araquari - SC",
-        },
-        { 
-          card: 'Cora', 
-          foto: "https://cultura.uol.com.br/upload/redactor/20200924173109_cobradomilhoedit.jpg",
-          idade: '5 meses',
-          doador: "João da Silva",
-          email: "joao.silva@servidor.com",
-          local: "Araquari - SC",
-        },
-      ],
-    }),
+  data() {
+    return {
+      uid: "",
+      animais: [],
+    };
+  },
+    mounted() {
+      this.uid = fb.auth.currentUser.uid;
+      this.buscarAnimaisNaFirebase();
+    },
     methods: {
+      async buscarAnimaisNaFirebase() {
+        this.animais = [];
+        const logAnimais = await fb.animaisCollection
+          .where("especie", "==", "Outros Animais")
+          .get();
+        for (const doc of logAnimais.docs) {
+          this.animais.push({
+            id: doc.id,
+            nomeanimal: doc.data().nomeanimal,
+            foto: doc.data().foto,
+            idade: doc.data().idade,
+            nomedoador: doc.data().nomedoador,
+            email: doc.data().email,
+            local: doc.data().cidade,
+          });
+        }
+      },
       vermais() {
         this.$router.push({ name: "Ver Mais"});
       }

@@ -20,39 +20,12 @@
               <td><img :src="card.foto" max-height="250" max-width="350"></td>
             </tr>
             <br>
-  <template>
-  <div class="text-center">
-    <v-dialog
-      v-model="dialog"
-      width="500"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="indigo lighten-3"
-          black
-          v-bind="attrs"
-          v-on="on"
-        >
-       Adotar
-        </v-btn>
-      </template>
-
-      <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          Olá usuário! 
-        </v-card-title>
-          <br>
-        <v-card-text>
-          Que bom que você encontrou um animalzinho do seu interese na nossa plataforma, agora como a Pets Donation trabalha realizando o intermédio entre os doadores e adotantes, através dos endereços para contato disponibilizados pelo
-          doador entre em contato com ele e combine a adoção do seu novo melhor amigo!
-          Adorariamos saber o seu feedback em relação ao nosso site, por isso nos envie um email contanto a sua experiência em: petsdonation@gmail.com.
-          E lembrese adotar é um momento de felicidade, que deve ser construído com parceria, cuidado e responsabilidade.
-
-        </v-card-text>   
-      </v-card>
-    </v-dialog>
-  </div>
-</template>            
+            <v-btn
+                class="ml-2 blue--text"
+                color="indigo lighten-4"
+                @click="adotar"
+              >Adotar
+              </v-btn>
           </table>
         </v-list-item>
       </v-row>
